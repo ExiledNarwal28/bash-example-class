@@ -15,7 +15,8 @@
 
 source .variables.sh
 
-while ${CHOICE,,} -neq "q"; do
+while :
+do
   clear
 
   echo "MENU PRINCIPAL"
@@ -37,13 +38,27 @@ while ${CHOICE,,} -neq "q"; do
   echo "Q) Quitter"
   echo ""
 
-  echo "Votre choix : "
-  read CHOICE
+  read -p "Votre choix : " CHOICE
 
   case $CHOICE in
-    [cC]) echo "Configuration"
+    0)
+      /bin/bash .parts/timer-new.sh
       ;;
-    [sS]) echo "Statistiques"
+
+    [cC]) 
+      clear
+      echo "Configuration"
+      read
+      ;;
+
+    [sS]) 
+      clear
+      echo "Statistiques"
+      read
+      ;;
+
+    [qQ]) 
+      exit
       ;;
   esac
 done
