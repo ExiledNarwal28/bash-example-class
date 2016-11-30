@@ -21,7 +21,7 @@ do
     echo "Vous devez entrer un chiffre!"
     read
   else
-    echo "Les informations sont-elles correctes ?"
+    echo "Les informations sont-elles correctes?"
     read -p "Votre choix [O,N] : " CHOICE
 
     case $CHOICE in
@@ -29,6 +29,17 @@ do
         echo "ok d'abord"
         read
         exit
+        ;;
+      *)
+        if [ $CHOICE = "n" ] || [ $CHOICE = "N" ]; then
+          read -p "Voulez vous-recommencer? [0,N] : " CHOICE
+        else
+          read -p "Entrée invalide. Voulez-vous-recommencer? [0,N] : " CHOICE
+        fi
+
+        if [ $CHOICE != "o" ] && [ $CHOICE != "O" ];then
+          exit
+        fi
         ;;
     esac
   fi

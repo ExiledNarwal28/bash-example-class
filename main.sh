@@ -42,7 +42,7 @@ do
 
   case $CHOICE in
     0)
-      /bin/bash .parts/timer-new.sh
+      /bin/bash .parts/timer/new.sh
       ;;
 
     [cC]) 
@@ -59,6 +59,14 @@ do
 
     [qQ]) 
       exit
+      ;;
+     
+    *)
+      # if is a number
+      #   .parts/timer/index.sh $CHOICE
+      # else
+      #   echo "Entrée invalide."
+      # fi
       ;;
   esac
 done
