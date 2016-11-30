@@ -6,6 +6,10 @@
 
 source .variables.sh
 
+# . .parts/timer/timer.sh
+# Timer '[timer1]' '[Nom du timer]' [Temps du timer à sa création, en minutes]
+# Timer timer1 'Travail sur le script' 15
+#
 # Fonction qui défini un timer
 function Timer() {
   # Un Timer dans la classe
@@ -13,12 +17,12 @@ function Timer() {
   this=$1
 
   # Propriétés
-  export ${this}_id=$2
-  export ${this}_name=$3
-  export ${this}_createdDate=$4
-  export ${this}_lastStartedDate=$5
-  export ${this}_running=$6
-  export ${this}_time=$7
+  export ${this}_id=1 # TODO TimerWorker generated id
+  export ${this}_name=$2 # Envoyé par l'utilisateur
+  export ${this}_createdDate=date # date actuelle
+  export ${this}_lastStartedDate= # null par défaut
+  export ${this}_running=false # N'est pas en marche par défaut
+  export ${this}_time=0 # temps en minute
 
   # Pour faire fonctionner les "méthodes"
   for method in $(compgen -A function)
@@ -27,18 +31,42 @@ function Timer() {
   done
 }
 
+# timer1_start
+#
 # Démarrer une timer
 function Timer_start() {
+  base=$(expr "$FUNCNAME" : '\([a-zA-Z][a-zA-Z0-9]*\)')
+  this=$1
+
+  # Arrêt du timer actuel
   # TODO
-  echo "lol"
+
+  # Démarrage du nouveau timer
+  export ${this}_running=true
+  export ${this}_lastStartedDate=date # date actuelle
+
+  # Mettre le nouveau timer comme timer actuel
+  # TODO
 }
 
+# timer_stop
+#
 # Stopper un timer
 function Timer_stop() {
+  base=$(expr "$FUNCNAME" : '\([a-zA-Z][a-zA-Z0-9]*\)')
+  this=$1
+
+  # Arrêt du timer actuel (this)
   # TODO
-  echo "lol"
+  # TODO : Vérifier que le timer est bien le timer actuel avant de modifier les informations
+
+  # Mise à jour des informations du timer
+  export ${this}_time= $(eval "echo \$${this}_calcTime")
+  export ${this}_running=false
 }
 
+# timer1_show
+#
 # Représentation simple d'un Timer
 function Timer_show() {
   base=$(expr "$FUNCNAME" : '\([a-zA-Z][a-zA-Z0-9]*\)')
@@ -56,6 +84,19 @@ function Timer_show() {
   echo "Temps : $(eval "echo \$${this}_calcTime")"
 }
 
+# timer1_showIndex ['No d'index']
+# timer1_showIndex 2
+#
+# Représentation limitée d'un Timer pour le menu principal
+function Timer_showIndex() {
+  base=$(expr "$FUNCNAME" : '\([a-zA-Z][a-zA-Z0-9]*\)')
+  this=$1
+
+  echo "$2) $(eval "echo \$${this}_name")"
+}
+
+# TODO
+#
 # Représentation complète d'un Timer
 function Timer_showFull() {
   base=$(expr "$FUNCNAME" : '\([a-zA-Z][a-zA-Z0-9]*\)')
@@ -64,6 +105,8 @@ function Timer_showFull() {
   # TODO
 }
 
+# timer1_calcTime
+#
 # Calculer le temps d'un timer
 function Timer_calcTime() {
   base=$(expr "$FUNCNAME" : '\([a-zA-Z][a-zA-Z0-9]*\)')
@@ -82,6 +125,8 @@ function Timer_calcTime() {
   return $time
 }
 
+# vector1_add vector2
+#
 # # Adds two vectors.
 # function Vector_add()
 # {

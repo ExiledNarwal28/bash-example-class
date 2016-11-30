@@ -26,13 +26,22 @@ do
 
     case $CHOICE in
       [oO])
-        echo "ok d'abord"
+        echo "Enregistrement du timer..."
+        # timer new
+        echo "Enregistrement terminé!"
+          read -p "Voulez-vous démarrer le timer? [0,N] : " CHOICE
+
+        if [ $CHOICE = "o" ] || [ $CHOICE = "O" ]; then
+          # timer start
+          echo "Timer démarré"
+        fi
+
         read
         exit
         ;;
       *)
         if [ $CHOICE = "n" ] || [ $CHOICE = "N" ]; then
-          read -p "Voulez vous-recommencer? [0,N] : " CHOICE
+          read -p "Voulez-vous recommencer? [0,N] : " CHOICE
         else
           read -p "Entrée invalide. Voulez-vous-recommencer? [0,N] : " CHOICE
         fi
