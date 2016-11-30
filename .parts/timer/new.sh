@@ -3,6 +3,7 @@
 # Nouveau timer
 
 source .variables.sh
+source .parts/timer/timer.sh
 
 while :
 do
@@ -26,10 +27,20 @@ do
 
     case $CHOICE in
       [oO])
-        echo "Enregistrement du timer..."
-        # timer new
-        echo "Enregistrement terminé!"
-          read -p "Voulez-vous démarrer le timer? [0,N] : " CHOICE
+        echo "Création du timer..."
+        
+        Timer 'timer1' $TIMER_NAME $TIMER_TIME
+
+        echo "Création terminé!"
+
+        echo ""
+        echo "Votre timer : "
+
+        $timer1_show
+
+        echo ""
+
+        read -p "Voulez-vous démarrer le timer? [0,N] : " CHOICE
 
         if [ $CHOICE = "o" ] || [ $CHOICE = "O" ]; then
           # timer start

@@ -8,7 +8,7 @@ source .variables.sh
 
 # . .parts/timer/timer.sh
 # Timer '[timer1]' '[Nom du timer]' [Temps du timer à sa création, en minutes]
-# Timer timer1 'Travail sur le script' 15
+# Timer $timer1 'Travail sur le script' 15
 #
 # Fonction qui défini un timer
 function Timer() {
@@ -31,7 +31,7 @@ function Timer() {
   done
 }
 
-# timer1_start
+# $timer1_start
 #
 # Démarrer une timer
 function Timer_start() {
@@ -65,7 +65,7 @@ function Timer_stop() {
   export ${this}_running=false
 }
 
-# timer1_show
+# $timer1_show
 #
 # Représentation simple d'un Timer
 function Timer_show() {
@@ -84,8 +84,8 @@ function Timer_show() {
   echo "Temps : $(eval "echo \$${this}_calcTime")"
 }
 
-# timer1_showIndex ['No d'index']
-# timer1_showIndex 2
+# $timer1_showIndex ['No d'index']
+# $timer1_showIndex 2
 #
 # Représentation limitée d'un Timer pour le menu principal
 function Timer_showIndex() {
@@ -105,7 +105,7 @@ function Timer_showFull() {
   # TODO
 }
 
-# timer1_calcTime
+# $timer1_calcTime
 #
 # Calculer le temps d'un timer
 function Timer_calcTime() {
