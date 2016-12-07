@@ -19,10 +19,11 @@ function Timer() {
   # Propriétés
   export ${this}_id=1 # TODO TimerWorker generated id
   export ${this}_name=$2 # Envoyé par l'utilisateur
+  export ${this}_creator=$3 # Login de l'utilisateur
   export ${this}_createdDate=date # date actuelle
   export ${this}_lastStartedDate= # null par défaut
   export ${this}_running=false # N'est pas en marche par défaut
-  export ${this}_time=0 # temps en minute
+  export ${this}_time=$4 # temps en minute
 
   # Pour faire fonctionner les "méthodes"
   for method in $(compgen -A function)
@@ -72,16 +73,17 @@ function Timer_show() {
   base=$(expr "$FUNCNAME" : '\([a-zA-Z][a-zA-Z0-9]*\)')
   this=$1
 
-  echo "Nom : $(eval "echo \$${this}_name")"
-  echo "Date de création : $(eval "echo \$${this}_createdDate")"
+  echo -e "\tNom : $(eval "echo \$${this}_name")"
+  echo -e "\tDate de création : $(eval "echo \$${this}_createdDate")"
+  echo -e "\tCréateur : $(eval "echo \$${this}_creator")"
   
   if $(eval "echo \$${this}_running"); then
-    echo "Statut : en fonction"
+    echo -e "\tStatut : en fonction"
   else
-    echo "Statut : arrêté"
+    echo -e "\tStatut : arrêté"
   fi
 
-  echo "Temps : $(eval "echo \$${this}_calcTime")"
+  echo -e "\tTemps : $(eval "echo \$${this}_calcTime")"
 }
 
 # $timer1_showIndex ['No d'index']
@@ -92,7 +94,6 @@ function Timer_showIndex() {
   base=$(expr "$FUNCNAME" : '\([a-zA-Z][a-zA-Z0-9]*\)')
   this=$1
 
-  echo "$2) $(eval "echo \$${this}_name")"
 }
 
 # TODO

@@ -19,24 +19,24 @@ while :
 do
   clear
 
-  echo "MENU PRINCIPAL"
-  echo ""
-  echo "Bonjour à vous, $USER"
-  echo ""
-  echo "Vous avez travailler X heures aujourd'hui"
-  echo ""
-  echo "Vos timers : "
-  echo ""
+  echo -e "\tMENU PRINCIPAL"
+  echo -e ""
+  echo -e "\tBonjour à vous, $USER"
+  echo -e ""
+  echo -e "\tVous avez travailler X heures aujourd'hui"
+  echo -e ""
+  echo -e "\tVos timers : "
+  echo -e ""
 
-  echo "0) [Nouveau timer]"
-  echo "1) Faux timer"
-  echo "2) Autre faux timer"
-  echo ""
+  echo -e "\t\t0) [Nouveau timer]"
+  echo -e "\t\t1) Faux timer"
+  echo -e "\t\t2) Autre faux timer"
+  echo -e ""
 
-  echo "C) Configuration"
-  echo "S) Statistiques"
-  echo "Q) Quitter"
-  echo ""
+  echo -e "\t\tC) Configuration"
+  echo -e "\t\tS) Statistiques"
+  echo -e "\t\tQ) Quitter"
+  echo -e ""
 
   read -p "Votre choix : " CHOICE
 

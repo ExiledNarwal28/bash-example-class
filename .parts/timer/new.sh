@@ -9,42 +9,42 @@ while :
 do
   clear
 
-  echo "Nouveau timer"
-  echo ""
+  echo -e "\tNouveau timer"
+  echo -e ""
 
   read -p "Nom du timer : " TIMER_NAME
-  echo ""
+  echo -e ""
 
   read -p "Durée de départ (en minutes) : " TIMER_TIME
-  echo ""
+  echo -e ""
 
   if ! [[ $TIMER_TIME =~ $REGEX_NUMBER ]] ; then
-    echo "Vous devez entrer un chiffre!"
+    echo -e "\tVous devez entrer un chiffre!"
     read
   else
-    echo "Les informations sont-elles correctes?"
+    echo -e "\tLes informations sont-elles correctes?"
     read -p "Votre choix [O,N] : " CHOICE
 
     case $CHOICE in
       [oO])
-        echo "Création du timer..."
+        echo -e "\tCréation du timer..."
         
-        Timer 'timer1' $TIMER_NAME $TIMER_TIME
+        Timer 'timer1' $TIMER_NAME $USER $TIMER_TIME
 
-        echo "Création terminé!"
+        echo -e "\tCréation terminé!"
 
-        echo ""
-        echo "Votre timer : "
+        echo -e "\t"
+        echo -e "\tVotre timer : "
 
         $timer1_show
 
-        echo ""
+        echo -e "\t"
 
         read -p "Voulez-vous démarrer le timer? [0,N] : " CHOICE
 
         if [ $CHOICE = "o" ] || [ $CHOICE = "O" ]; then
           # timer start
-          echo "Timer démarré"
+          echo -e "\tTimer démarré"
         fi
 
         read
