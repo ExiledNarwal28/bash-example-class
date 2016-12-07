@@ -30,7 +30,7 @@ Ce programme n'est pas du tout terminé. Par contre, il peut servir d'une excell
 ##Problèmes : ##
 
         #1 Le ID des timers ne marche pas. C'est à cause du retour de TimerWorker
-        #2 Le changement de timer actif ne fonctionne pas dans TimerWorker (j'ai de la misère à travailler avec une "classe" depuis une autre)
+        #2 La comparaison pour savoir si un timer est en marche ne fonctionne pas ($timer=$TIMERWORKER_getRunningTimer ne semble pas être correct...)
         #3 La lecture du fichier .parts/timer/.timers.sh n'est pas fait
         #4 L'enregistrement fonctionne mal à cause du id inexact (problème #1)
         #5 Les menus de Timer ne sont pas fait (index, edit, delete, switch-running et info)
@@ -38,3 +38,4 @@ Ce programme n'est pas du tout terminé. Par contre, il peut servir d'une excell
         #7 Le runningTimer n'est pas lié au $USER
         #8 Le menu de configuration n'est pas fait
         #9 La page de statistiques n'est pas fait
+        #10 Le changement de timer actif ne fonctionne pas dans TimerWorker (problème #2)
