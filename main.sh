@@ -4,7 +4,7 @@
 #
 # Date de départ : 2016-11-23
 #
-# Date de fin    : 2016-XX-XX
+# Date de fin    : 2016-12-07
 #
 # Programme      : Gestionnaire de saisie de temps
 #
