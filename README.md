@@ -10,7 +10,7 @@ Ce programme n'est pas du tout terminé. Par contre, il peut servir d'une excell
         
 ##Fichiers: ##
 
-        Les fichiers entre parenthèses n'ont pas été commencés
+*Les fichiers entre parenthèses n'ont pas été commencés*
 
         main.sh : le menu principal, l'entrée du programme
         (settings.sh) : un menu de configuration (nombre de timers par page de main.sh, ...)
