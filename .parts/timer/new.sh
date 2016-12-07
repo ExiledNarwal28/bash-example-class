@@ -43,9 +43,13 @@ do
         read -p "Voulez-vous démarrer le timer? [0,N] : " CHOICE
 
         if [ $CHOICE = "o" ] || [ $CHOICE = "O" ]; then
-          # timer start
+          $timer1_start
           echo -e "\tTimer démarré"
+          echo ""
         fi
+
+        $timer1_save
+        echo -e "\tTimer sauvegardé"
 
         read
         exit

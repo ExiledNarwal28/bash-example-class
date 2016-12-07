@@ -34,9 +34,8 @@ function TimerWorker_getNextId() {
   base=$(expr "$FUNCNAME" : '\([a-zA-Z][a-zA-Z0-9]*\)')
   this=$1
 
-  nextId=export ${this}_nextId # Timer actuel
-  export ${this}_nextId=nextId+1 # Incrémente
-  return nextId
+  eval "$2=$(eval echo "\$${this}_nextId")" # On retourne le prochain Id
+  export ${this}_nextId=$nextId+1 # Incrémente
 }
 
 
@@ -47,7 +46,7 @@ function TimerWorker_getRunningTimer() {
   base=$(expr "$FUNCNAME" : '\([a-zA-Z][a-zA-Z0-9]*\)')
   this=$1
 
-  return export ${this}_runningTimer # Timer actuel
+  eval "$2=$(eval echo "\$${this}_runningTimer")" # Timer actuel
 }
 
 # $timerWorker_setRunningTimer [timer]

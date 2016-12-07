@@ -13,7 +13,8 @@
 #                  en mémoire les processus ouvert et utilisés
 #                  pendant qu'ils travaillent.
 
-source .variables.sh
+source .parts/timerWorker/timerWorker.sh
+source .parts/timerWorker/.timerWorkers.sh
 
 while :
 do
@@ -25,14 +26,16 @@ do
   echo -e ""
   echo -e "\tVous avez travailler X heures aujourd'hui"
   echo -e ""
+
   echo -e "\tVos timers : "
   echo -e ""
-
   echo -e "\t\t0) [Nouveau timer]"
   echo -e "\t\t1) Faux timer"
   echo -e "\t\t2) Autre faux timer"
   echo -e ""
 
+  echo -e "\tOptions : "
+  echo -e ""
   echo -e "\t\tC) Configuration"
   echo -e "\t\tS) Statistiques"
   echo -e "\t\tQ) Quitter"
