@@ -4,6 +4,7 @@
 
 # Source : http://hipersayanx.blogspot.ca/2012/12/object-oriented-programming-in-bash.html
 
+# On importer TIMERWORKER
 source .variables.sh
 
 # . .parts/timer/timer.sh
@@ -17,7 +18,7 @@ function Timer() {
   this=$1
 
   # Propriétés
-  export ${this}_id=1 # TODO TimerWorker generated id
+  export ${this}_id=TIMERWORKER_getNextId # TimerWorker generated id
   export ${this}_name=$2 # Envoyé par l'utilisateur
   export ${this}_creator=$3 # Login de l'utilisateur
   export ${this}_createdDate=date # date actuelle
@@ -40,14 +41,14 @@ function Timer_start() {
   this=$1
 
   # Arrêt du timer actuel
-  # TODO
+  TIMERWORKER_stopRunningTimer
 
   # Démarrage du nouveau timer
   export ${this}_running=true
   export ${this}_lastStartedDate=date # date actuelle
 
   # Mettre le nouveau timer comme timer actuel
-  # TODO
+  TIMERWORKER_setRunningTimer ${this}
 }
 
 # timer_stop
@@ -58,12 +59,16 @@ function Timer_stop() {
   this=$1
 
   # Arrêt du timer actuel (this)
-  # TODO
-  # TODO : Vérifier que le timer est bien le timer actuel avant de modifier les informations
+  # Vérifier que le timer est bien le timer actuel avant de modifier les informations
+  if [${this}=TIMERWORKER_getRunningTimer]; then
+    TIMERWORKER_stopRunningTimer
 
-  # Mise à jour des informations du timer
-  export ${this}_time= $(eval "echo \$${this}_calcTime")
-  export ${this}_running=false
+    # Mise à jour des informations du timer
+    export ${this}_time=$(eval "echo \$${this}_calcTime")
+    export ${this}_running=false
+  else
+    echo -e "\t\t\t Erreur, le timer n'est pas le timer en marche, d'après TimerWorker?"
+  fi
 }
 
 # $timer1_show
@@ -73,6 +78,7 @@ function Timer_show() {
   base=$(expr "$FUNCNAME" : '\([a-zA-Z][a-zA-Z0-9]*\)')
   this=$1
 
+  echo -e "\tID : $(eval "echo \$${this}_id")"
   echo -e "\tNom : $(eval "echo \$${this}_name")"
   echo -e "\tDate de création : $(eval "echo \$${this}_createdDate")"
   echo -e "\tCréateur : $(eval "echo \$${this}_creator")"
@@ -125,32 +131,3 @@ function Timer_calcTime() {
 
   return $time
 }
-
-# vector1_add vector2
-#
-# # Adds two vectors.
-# function Vector_add()
-# {
-#   base=$(expr "$FUNCNAME" : '\([a-zA-Z][a-zA-Z0-9]*\)')
-#   this=$1
-#   other=$2
-
-#   # Get it's components
-#   x1=$(eval "echo \$${this}_x")
-#   y1=$(eval "echo \$${this}_y")
-#   z1=$(eval "echo \$${this}_z")
-
-#   x2=$(eval "echo \$${other}_x")
-#   y2=$(eval "echo \$${other}_y")
-#   z2=$(eval "echo \$${other}_z")
-
-#   # Add it's components
-#   x=$(($x1 + $x2))
-#   y=$(($y1 + $y2))
-#   z=$(($z1 + $z2))
-
-#   # Create a new vector. (8)
-#   Vector 'vector3' $x $y $z
-
-#   $vector3_show
-# }
