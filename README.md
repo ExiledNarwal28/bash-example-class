@@ -2,6 +2,8 @@
 
 **This program is unfinished. This is a school project where I had to work for a specific number of hours, so it is not completed. It still is a fantastic example of an object-oriented program simulated in bash.**
 
+Also, there might be some French in there (sorry, school project requirements). I will translate it if anyone sees a use for this program.
+
 ## What does it do? (say it was completed) ##
 
 I got most of my inspiration from Harvest. A user can create a timer with a name and a total time.  The user can activate or deactivate timers. Timers can be saved. Each timers has a list of processes running while the timer is running.
