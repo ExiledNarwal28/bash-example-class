@@ -1,41 +1,39 @@
-#Programme de gestion de saisie de temps#
+# Bash example : simulating object-oriented programming # 
 
-**Auteur :** Fabien Roy
+** This program is unfinished. This is a school project where I had to work for a specific number of hours, so it is not completed. It still is a fantastic example of an object-oriented program simulated in bash. ** 
 
-**Date :** 16-11-23 16-12-07
+## What does it do? (say it was completed) ##
 
-**Description :** Un utilisateur peut créer un timer qui a un nom et un temps total. On peut activer/désactiver des timers. Les timers peuvent s'enregistrer. On liste les processus qui ont été en fonction pendant chaque timer.
-
-Ce programme n'est pas du tout terminé. Par contre, il peut servir d'une excellente référence sur comment faire des classes/méthodes/objets en bash. Il y a beaucoup de commentaires et les méthodes sont expliquées.
+I got most of my inspiration from Harvest. A user can create a timer with a name and a total time.  The user can activate or deactivate timers. Timers can be saved. Each timers has a list of processes running while the timer is running.
         
-##Fichiers: ##
+## Files ##
 
-*Les fichiers entre parenthèses n'ont pas été commencés*
+*Files between parantheses were not developped*
 
-        main.sh : le menu principal, l'entrée du programme
-        (settings.sh) : un menu de configuration (nombre de timers par page de main.sh, ...)
-        .variables.sh : les variables utilisées partout dans le programme
-        (.parts/stats.sh) : un menu où l'on affiche diverses statistiques (qui a travaillé le plus, temps de la semaine/mois/année, ...)
-        .parts/timer/timer.sh : définition de la "classe" Timer
-        .parts/timer/new.sh : menu pour faire un nouveau Timer
-        (.parts/timer/index.sh) : menu principal d'un Timer
-        (.parts/timer/edit.sh) : menu pour éditer un Timer
-        (.parts/timer/delete.sh) : menu pour supprimer un Timer
-        (.parts/timer/switch-running.sh) : menu pour arrêter/mettre en marche un Timer
-        (.parts/timer/info.sh) : menu pour voir les détails d'un Timer (les processus)
-        .parts/timer/.timers.sh : fichier où l'on enregistre les Timers
-        .parts/timerWorker/timerWorker.sh : définition de la "classe" TimerWorker
-        .parts/timerWorker/.timerWorkers.sh : fichier où l'on enregistre le TimerWorker (pour avoir le runningTimer)
+        main.sh                             : Main file, the start of program
+        (settings.sh)                       : Configuration menu (nomber of timers per page, ...)
+        .variables.sh                       : Global variables used througout the program
+        (.parts/stats.sh)                   : Menu where stats are shown (who worked the most, total time for week/month/year, ...)
+        .parts/timer/timer.sh               : Definition of Timer "class"
+        .parts/timer/new.sh                 : Menu for making a new Timer
+        (.parts/timer/index.sh)             : Detail screen for a Timer
+        (.parts/timer/edit.sh)              : Edit screen for a Timer
+        (.parts/timer/delete.sh)            : Delete screen for a Timer
+        (.parts/timer/switch-running.sh)    : Menu for activating/deactivating a Timer
+        (.parts/timer/info.sh)              : Menu to see processes details of a Timer (what processes where running while Timer was running)
+        .parts/timer/.timers.sh             : File to save Timers
+        .parts/timerWorker/timerWorker.sh   : Definition of TimerWorker "class"; Class for managing Timers
+        .parts/timerWorker/.timerWorkers.sh : File to save TimerWorker (to know which Timer is running)
 
-##Problèmes : ##
+## Problems ##
 
-        #1 Le ID des timers ne marche pas. C'est à cause du retour de TimerWorker
-        #2 La comparaison pour savoir si un timer est en marche ne fonctionne pas ($timer=$TIMERWORKER_getRunningTimer ne semble pas être correct...)
-        #3 La lecture du fichier .parts/timer/.timers.sh n'est pas fait
-        #4 L'enregistrement fonctionne mal à cause du id inexact (problème #1)
-        #5 Les menus de Timer ne sont pas fait (index, edit, delete, switch-running et info)
-        #6 Rien n'a été fait pour enregistrer les processus encore
-        #7 Le runningTimer n'est pas lié au $USER
-        #8 Le menu de configuration n'est pas fait
-        #9 La page de statistiques n'est pas fait
-        #10 Le changement de timer actif ne fonctionne pas dans TimerWorker (problème #2)
+        #1  Timers' ID do not work. This is because of TimerWorker's returning a wrong ID.
+        #2  Comparison to know if a Timer is running does not work ($timer=$TIMERWORKER_getRunningTimer is not working...)
+        #3  Reading of .parts/timer/.timers.sh is not developped
+        #4  Saving Timers does not work since ID is not relevant (see #1)
+        #5  All Timers' menus are not done (index, edit, delete, switch-running and info)
+        #6  Nothing was developped to save running processes
+        #7  TimerWorker's runningTimer is not linked to the $USER (Linux user)
+        #8  Configuration menu is not developped
+        #9  Stats menu is not developped
+        #10 Changing the running Timer with TimerWorker does not work (see #2)
